@@ -6,7 +6,7 @@ object HuffmanTree {
        var root: Node = null
        var builtIndex = 0
        while(nodes.size > 1) {
-         val mins: List[Node] = nodes.sortBy(_.weight).takeRight(2)
+         val mins: List[Node] = nodes.sortBy(_.weight).take(2)
          mins.foreach(_.increase())
 
          val builtNode = new Node(builtIndex)
