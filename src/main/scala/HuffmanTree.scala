@@ -44,6 +44,13 @@ class Node {
     isBuilt = true
   }
 
+
+  def this(name: String, weight: Int) {
+    this()
+    this.name = name
+    this.weight = weight
+  }
+
   def sum: Int = {
     val myWeight = if (isBuilt) 0 else weight * layers
     val leftW  = if(left == null) 0 else left.sum
@@ -75,4 +82,7 @@ class Node {
     val state = Seq(name)
     state.map(_.hashCode()).foldLeft(0)((a, b) => 31 * a + b)
   }
+}
+object Node {
+  def apply(name: String, weight: Int) = new Node(name, weight)
 }
