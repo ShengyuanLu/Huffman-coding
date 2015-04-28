@@ -6,12 +6,13 @@ object HuffmanTree {
        var root: Node = null
        var builtIndex = 0
        while(nodes.size > 1) {
-         val mins: List[Node] = nodes.sortBy(_.weight).take(2)
+         val mins: List[Node] = nodes.sortBy(_.weight).take(2) //Select min 2 nodes as new node
          mins.foreach(_.increase())
 
          val builtNode = new Node(builtIndex)
          builtIndex += 1
 
+         //Create a parent node to the 2 min nodes
          builtNode.left = mins.head
          builtNode.right = mins.last
          builtNode.left.parent = builtNode
@@ -19,6 +20,7 @@ object HuffmanTree {
 
          builtNode.weight = builtNode.left.weight + builtNode.right.weight
 
+         //Replace 2 min nodes with new parent nodes
          nodes = nodes.diff(mins)
          nodes = nodes :+ builtNode
 
