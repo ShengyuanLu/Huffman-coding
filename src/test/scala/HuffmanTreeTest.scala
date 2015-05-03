@@ -5,7 +5,7 @@ import org.junit.Test
 class HuffmanTreeTest {
   @Test
   def testAB {
-    val nodes = List(Node("A", 2),  Node("B", 3))
+    val nodes = List(Node("A", 2), Node("B", 3))
     val tree: Node = HuffmanTree.buildHuffmanTree(nodes)
     assertEquals(5, tree.sum)
   }
@@ -14,7 +14,6 @@ class HuffmanTreeTest {
   def testABC {
     val nodes = List(Node("A", 2), Node("B", 3), Node("C", 4))
     val tree: Node = HuffmanTree.buildHuffmanTree(nodes)
-    System.out.println(tree)
     assertEquals(14, tree.sum)
   }
 

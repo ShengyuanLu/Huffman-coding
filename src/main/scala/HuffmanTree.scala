@@ -13,12 +13,7 @@ object HuffmanTree {
          builtIndex += 1
 
          //Create a parent node to the 2 min nodes
-         builtNode.left = mins.head
-         builtNode.right = mins.last
-         builtNode.left.parent = builtNode
-         builtNode.right.parent = builtNode
-
-         builtNode.weight = builtNode.left.weight + builtNode.right.weight
+         builtNode :+ mins
 
          //Replace 2 min nodes with new parent nodes
          nodes = nodes.diff(mins)
@@ -39,6 +34,15 @@ class Node {
   var right: Node = null
   var layers: Int = 0
   var isBuilt: Boolean = false
+
+  def :+(lr: List[Node]) {
+    left = lr.head
+    right = lr.last
+    left.parent = this
+    right.parent = this
+
+    weight = left.weight + right.weight
+  }
 
   def this(index: Int) {
     this()
